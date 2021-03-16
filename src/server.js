@@ -4,6 +4,9 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const PORT = process.env.PORT;
+const USER = process.env.MONGO_USER;
+const PASSWORD = process.env.MONGO_PASSWORD;
+const MONGO_DB = process.env.MONGO_DB;
 
 const app = express();
 
@@ -11,7 +14,7 @@ const app = express();
 const authRoutes = require('./routes/auth');
 
 //MongoDB Connection
-mongoose.connect(process.env.MONGO_URL + process.env.MONGO_DB, {
+mongoose.connect('mongodb+srv://' + USER + ':' + PASSWORD + '@cluster0.vmzfp.mongodb.net/myFirstDatabase?retryWrites=true/' + MONGO_DB, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useFindAndModify: true,
